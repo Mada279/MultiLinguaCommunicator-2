@@ -95,7 +95,7 @@ export class MemStorage implements IStorage {
 
   private async initSampleData() {
     // Import fs promises
-    const fs = require('fs').promises;
+    import { promises as fs } from 'fs';
 
     // Create a default admin user
     const adminUser: InsertUser = {
