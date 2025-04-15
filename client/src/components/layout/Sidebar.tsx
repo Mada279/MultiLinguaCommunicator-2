@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { useI18n } from '@/context/I18nContext';
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
+import Logo from './Logo';
 
 const Sidebar: React.FC = () => {
   const { t } = useI18n();
