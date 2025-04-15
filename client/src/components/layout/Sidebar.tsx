@@ -59,7 +59,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/employees') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-users w-5 h-5 ltr:mr-2 rtl:ml-2"></i>
@@ -71,7 +71,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/applicants') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-user-plus w-5 h-5 ltr:mr-2 rtl:ml-2"></i>
@@ -83,7 +83,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/documents') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-folder-open w-5 h-5 ltr:mr-2 rtl:ml-2"></i>
@@ -101,7 +101,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/reports') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-chart-line w-5 h-5 ltr:mr-2 rtl:ml-2"></i>
@@ -113,12 +113,12 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/notifications') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-bell w-5 h-5 ltr:mr-2 rtl:ml-2"></i>
               {t('notifications')}
-              <span className="ml-auto bg-primary-100 text-primary-600 rounded-full px-2 py-0.5 text-xs">12</span>
+              <span className="ml-auto bg-mint-green text-white rounded-full px-2 py-0.5 text-xs">12</span>
             </a>
           </Link>
           
@@ -126,7 +126,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/settings') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-gear w-5 h-5 ltr:mr-2 rtl:ml-2"></i>

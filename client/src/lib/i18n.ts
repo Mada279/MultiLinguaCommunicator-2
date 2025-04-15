@@ -33,7 +33,7 @@ export const translations = {
     
     // Dashboard
     documentManagement: 'Document Management',
-    documentManagementDesc: 'Organize, track and manage employee and applicant documents',
+    documentManagementDesc: 'Intelligent system for HR document management and verification',
     expiringDocumentsAlert: 'You have {count} documents expiring in the next 30 days.',
     viewDocuments: 'View documents',
     
@@ -139,7 +139,7 @@ export const translations = {
     
     // Dashboard
     documentManagement: 'إدارة المستندات',
-    documentManagementDesc: 'تنظيم وتتبع وإدارة مستندات الموظفين والمتقدمين',
+    documentManagementDesc: 'نظام ذكي لإدارة وتوثيق مستندات الموارد البشرية',
     expiringDocumentsAlert: 'لديك {count} مستندات ستنتهي صلاحيتها في الثلاثين يومًا القادمة.',
     viewDocuments: 'عرض المستندات',
     
@@ -245,7 +245,7 @@ export const translations = {
     
     // Dashboard
     documentManagement: 'दस्तावेज़ प्रबंधन',
-    documentManagementDesc: 'कर्मचारियों और आवेदकों के दस्तावेज़ों को व्यवस्थित, ट्रैक और प्रबंधित करें',
+    documentManagementDesc: 'मानव संसाधन दस्तावेजों के प्रबंधन और सत्यापन के लिए बुद्धिमान प्रणाली',
     expiringDocumentsAlert: 'आपके पास {count} दस्तावेज़ हैं जो अगले 30 दिनों में समाप्त हो रहे हैं।',
     viewDocuments: 'दस्तावेज़ देखें',
     
