@@ -14,14 +14,14 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   updateUser(id: number, user: Partial<InsertUser>): Promise<User | undefined>;
-  
+
   // Document categories
   getDocumentCategories(): Promise<DocumentCategory[]>;
   getDocumentCategory(id: number): Promise<DocumentCategory | undefined>;
   createDocumentCategory(category: InsertDocumentCategory): Promise<DocumentCategory>;
   updateDocumentCategory(id: number, category: Partial<InsertDocumentCategory>): Promise<DocumentCategory | undefined>;
   deleteDocumentCategory(id: number): Promise<boolean>;
-  
+
   // Document types
   getDocumentTypes(): Promise<DocumentType[]>;
   getDocumentTypesByCategory(categoryId: number): Promise<DocumentType[]>;
@@ -29,7 +29,7 @@ export interface IStorage {
   createDocumentType(type: InsertDocumentType): Promise<DocumentType>;
   updateDocumentType(id: number, type: Partial<InsertDocumentType>): Promise<DocumentType | undefined>;
   deleteDocumentType(id: number): Promise<boolean>;
-  
+
   // Documents
   getDocuments(): Promise<Document[]>;
   getDocument(id: number): Promise<Document | undefined>;
@@ -39,7 +39,7 @@ export interface IStorage {
   createDocument(document: InsertDocument): Promise<Document>;
   updateDocument(id: number, document: Partial<InsertDocument>): Promise<Document | undefined>;
   deleteDocument(id: number): Promise<boolean>;
-  
+
   // Persons (employees/applicants)
   getPersons(): Promise<Person[]>;
   getPersonsByType(type: string): Promise<Person[]>;
@@ -47,7 +47,7 @@ export interface IStorage {
   createPerson(person: InsertPerson): Promise<Person>;
   updatePerson(id: number, person: Partial<InsertPerson>): Promise<Person | undefined>;
   deletePerson(id: number): Promise<boolean>;
-  
+
   // Notifications
   getNotifications(): Promise<Notification[]>;
   getNotificationsByUser(userId: number): Promise<Notification[]>;
@@ -66,14 +66,14 @@ export class MemStorage implements IStorage {
   private documents: Map<number, Document>;
   private persons: Map<number, Person>;
   private notifications: Map<number, Notification>;
-  
+
   private currentUserId: number;
   private currentDocumentCategoryId: number;
   private currentDocumentTypeId: number;
   private currentDocumentId: number;
   private currentPersonId: number;
   private currentNotificationId: number;
-  
+
   constructor() {
     this.users = new Map();
     this.documentCategories = new Map();
@@ -81,27 +81,22 @@ export class MemStorage implements IStorage {
     this.documents = new Map();
     this.persons = new Map();
     this.notifications = new Map();
-    
+
     this.currentUserId = 1;
     this.currentDocumentCategoryId = 1;
     this.currentDocumentTypeId = 1;
     this.currentDocumentId = 1;
     this.currentPersonId = 1;
     this.currentNotificationId = 1;
-    
+
     // Initialize with some sample data
     this.initSampleData();
   }
-  
+
   private async initSampleData() {
-    // Ensure uploads directory exists
-    const uploadDir = './uploads';
-    try {
-      await fs.mkdir(uploadDir, { recursive: true });
-    } catch (error) {
-      console.error('Error creating uploads directory:', error);
-    }
-    
+    // Import fs promises
+    const fs = require('fs').promises;
+
     // Create a default admin user
     const adminUser: InsertUser = {
       username: "admin",
@@ -113,7 +108,7 @@ export class MemStorage implements IStorage {
       avatar: ""
     };
     this.createUser(adminUser);
-    
+
     // Create sample document categories
     const categories = [
       {
@@ -138,9 +133,9 @@ export class MemStorage implements IStorage {
         color: "warning"
       }
     ];
-    
+
     categories.forEach(category => this.createDocumentCategory(category as InsertDocumentCategory));
-    
+
     // Create sample document types
     const types = [
       {
@@ -225,9 +220,9 @@ export class MemStorage implements IStorage {
         requiredForApplicants: false
       }
     ];
-    
+
     types.forEach(type => this.createDocumentType(type as InsertDocumentType));
-    
+
     // Create sample employees/applicants
     const samplePersons = [
       {
@@ -274,20 +269,20 @@ export class MemStorage implements IStorage {
         status: "pending"
       }
     ];
-    
+
     samplePersons.forEach(person => this.createPerson(person as InsertPerson));
 
     // Create sample documents
     const currentDate = new Date();
     const futureDate = new Date();
     futureDate.setFullYear(currentDate.getFullYear() + 1);
-    
+
     const expiredDate = new Date();
     expiredDate.setMonth(currentDate.getMonth() - 1);
-    
+
     const expiringSoonDate = new Date();
     expiringSoonDate.setDate(currentDate.getDate() + 25);
-    
+
     const sampleDocuments = [
       {
         userId: 1,
@@ -342,9 +337,9 @@ export class MemStorage implements IStorage {
         expiryDate: expiredDate
       }
     ];
-    
+
     sampleDocuments.forEach(doc => this.createDocument(doc as InsertDocument));
-    
+
     // Create sample notifications
     const sampleNotifications = [
       {
@@ -356,21 +351,29 @@ export class MemStorage implements IStorage {
         createdAt: currentDate
       }
     ];
-    
+
     sampleNotifications.forEach(notification => this.createNotification(notification as InsertNotification));
+
+    // Ensure uploads directory exists
+    const uploadDir = './uploads';
+    try {
+      await fs.mkdir(uploadDir, { recursive: true });
+    } catch (error) {
+      console.error('Error creating uploads directory:', error);
+    }
   }
-  
+
   // User methods
   async getUser(id: number): Promise<User | undefined> {
     return this.users.get(id);
   }
-  
+
   async getUserByUsername(username: string): Promise<User | undefined> {
     return Array.from(this.users.values()).find(
       (user) => user.username === username,
     );
   }
-  
+
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.currentUserId++;
     const now = new Date();
@@ -378,25 +381,25 @@ export class MemStorage implements IStorage {
     this.users.set(id, user);
     return user;
   }
-  
+
   async updateUser(id: number, user: Partial<InsertUser>): Promise<User | undefined> {
     const existingUser = this.users.get(id);
     if (!existingUser) return undefined;
-    
+
     const updatedUser = { ...existingUser, ...user };
     this.users.set(id, updatedUser);
     return updatedUser;
   }
-  
+
   // Document category methods
   async getDocumentCategories(): Promise<DocumentCategory[]> {
     return Array.from(this.documentCategories.values());
   }
-  
+
   async getDocumentCategory(id: number): Promise<DocumentCategory | undefined> {
     return this.documentCategories.get(id);
   }
-  
+
   async createDocumentCategory(category: InsertDocumentCategory): Promise<DocumentCategory> {
     const id = this.currentDocumentCategoryId++;
     const now = new Date();
@@ -404,34 +407,34 @@ export class MemStorage implements IStorage {
     this.documentCategories.set(id, newCategory);
     return newCategory;
   }
-  
+
   async updateDocumentCategory(id: number, category: Partial<InsertDocumentCategory>): Promise<DocumentCategory | undefined> {
     const existingCategory = this.documentCategories.get(id);
     if (!existingCategory) return undefined;
-    
+
     const updatedCategory = { ...existingCategory, ...category };
     this.documentCategories.set(id, updatedCategory);
     return updatedCategory;
   }
-  
+
   async deleteDocumentCategory(id: number): Promise<boolean> {
     return this.documentCategories.delete(id);
   }
-  
+
   // Document type methods
   async getDocumentTypes(): Promise<DocumentType[]> {
     return Array.from(this.documentTypes.values());
   }
-  
+
   async getDocumentTypesByCategory(categoryId: number): Promise<DocumentType[]> {
     return Array.from(this.documentTypes.values())
       .filter(type => type.categoryId === categoryId);
   }
-  
+
   async getDocumentType(id: number): Promise<DocumentType | undefined> {
     return this.documentTypes.get(id);
   }
-  
+
   async createDocumentType(type: InsertDocumentType): Promise<DocumentType> {
     const id = this.currentDocumentTypeId++;
     const now = new Date();
@@ -439,44 +442,44 @@ export class MemStorage implements IStorage {
     this.documentTypes.set(id, newType);
     return newType;
   }
-  
+
   async updateDocumentType(id: number, type: Partial<InsertDocumentType>): Promise<DocumentType | undefined> {
     const existingType = this.documentTypes.get(id);
     if (!existingType) return undefined;
-    
+
     const updatedType = { ...existingType, ...type };
     this.documentTypes.set(id, updatedType);
     return updatedType;
   }
-  
+
   async deleteDocumentType(id: number): Promise<boolean> {
     return this.documentTypes.delete(id);
   }
-  
+
   // Document methods
   async getDocuments(): Promise<Document[]> {
     return Array.from(this.documents.values());
   }
-  
+
   async getDocument(id: number): Promise<Document | undefined> {
     return this.documents.get(id);
   }
-  
+
   async getDocumentsByUser(userId: number): Promise<Document[]> {
     return Array.from(this.documents.values())
       .filter(doc => doc.userId === userId);
   }
-  
+
   async getDocumentsByType(typeId: number): Promise<Document[]> {
     return Array.from(this.documents.values())
       .filter(doc => doc.typeId === typeId);
   }
-  
+
   async getDocumentsByStatus(status: string): Promise<Document[]> {
     return Array.from(this.documents.values())
       .filter(doc => doc.status === status);
   }
-  
+
   async createDocument(document: InsertDocument): Promise<Document> {
     const id = this.currentDocumentId++;
     const now = document.uploadedAt || new Date();
@@ -484,34 +487,34 @@ export class MemStorage implements IStorage {
     this.documents.set(id, newDocument);
     return newDocument;
   }
-  
+
   async updateDocument(id: number, document: Partial<InsertDocument>): Promise<Document | undefined> {
     const existingDocument = this.documents.get(id);
     if (!existingDocument) return undefined;
-    
+
     const updatedDocument = { ...existingDocument, ...document };
     this.documents.set(id, updatedDocument);
     return updatedDocument;
   }
-  
+
   async deleteDocument(id: number): Promise<boolean> {
     return this.documents.delete(id);
   }
-  
+
   // Person methods
   async getPersons(): Promise<Person[]> {
     return Array.from(this.persons.values());
   }
-  
+
   async getPersonsByType(type: string): Promise<Person[]> {
     return Array.from(this.persons.values())
       .filter(person => person.type === type);
   }
-  
+
   async getPerson(id: number): Promise<Person | undefined> {
     return this.persons.get(id);
   }
-  
+
   async createPerson(person: InsertPerson): Promise<Person> {
     const id = this.currentPersonId++;
     const now = new Date();
@@ -519,34 +522,34 @@ export class MemStorage implements IStorage {
     this.persons.set(id, newPerson);
     return newPerson;
   }
-  
+
   async updatePerson(id: number, person: Partial<InsertPerson>): Promise<Person | undefined> {
     const existingPerson = this.persons.get(id);
     if (!existingPerson) return undefined;
-    
+
     const updatedPerson = { ...existingPerson, ...person };
     this.persons.set(id, updatedPerson);
     return updatedPerson;
   }
-  
+
   async deletePerson(id: number): Promise<boolean> {
     return this.persons.delete(id);
   }
-  
+
   // Notification methods
   async getNotifications(): Promise<Notification[]> {
     return Array.from(this.notifications.values());
   }
-  
+
   async getNotificationsByUser(userId: number): Promise<Notification[]> {
     return Array.from(this.notifications.values())
       .filter(notification => notification.userId === userId);
   }
-  
+
   async getNotification(id: number): Promise<Notification | undefined> {
     return this.notifications.get(id);
   }
-  
+
   async createNotification(notification: InsertNotification): Promise<Notification> {
     const id = this.currentNotificationId++;
     const now = notification.createdAt || new Date();
@@ -554,24 +557,24 @@ export class MemStorage implements IStorage {
     this.notifications.set(id, newNotification);
     return newNotification;
   }
-  
+
   async updateNotification(id: number, notification: Partial<InsertNotification>): Promise<Notification | undefined> {
     const existingNotification = this.notifications.get(id);
     if (!existingNotification) return undefined;
-    
+
     const updatedNotification = { ...existingNotification, ...notification };
     this.notifications.set(id, updatedNotification);
     return updatedNotification;
   }
-  
+
   async deleteNotification(id: number): Promise<boolean> {
     return this.notifications.delete(id);
   }
-  
+
   async markNotificationAsRead(id: number): Promise<Notification | undefined> {
     const notification = this.notifications.get(id);
     if (!notification) return undefined;
-    
+
     notification.read = true;
     this.notifications.set(id, notification);
     return notification;
