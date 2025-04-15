@@ -29,7 +29,7 @@ const Sidebar: React.FC = () => {
             <h1 className="font-bold text-primary-700 text-lg">
               {t('appName')}
             </h1>
-            <p className="text-xs text-slate-500">HR & Documents</p>
+            <p className="text-xs text-slate-500">Document Management</p>
           </div>
         </div>
       </div>

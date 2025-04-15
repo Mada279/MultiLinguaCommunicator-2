@@ -4,7 +4,7 @@ export type Language = 'en' | 'ar' | 'hi';
 export const translations = {
   en: {
     // Common
-    appName: 'Erada HR & Document System',
+    appName: 'Mawthiq',
     loading: 'Loading...',
     save: 'Save',
     cancel: 'Cancel',
@@ -110,7 +110,7 @@ export const translations = {
   
   ar: {
     // Common
-    appName: 'نظام إرادة للموارد البشرية والمستندات',
+    appName: 'موثّق',
     loading: 'جاري التحميل...',
     save: 'حفظ',
     cancel: 'إلغاء',
@@ -216,7 +216,7 @@ export const translations = {
   
   hi: {
     // Common
-    appName: 'एराडा एचआर और दस्तावेज प्रणाली',
+    appName: 'मावथिक़',
     loading: 'लोड हो रहा है...',
     save: 'सहेजें',
     cancel: 'रद्द करें',
