@@ -597,10 +597,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
   
   // Serve uploaded files
-  app.get("/uploads/:filename", (req: Request, res: Response) => {
+  app.get("/uploads/:filename", async (req: Request, res: Response) => {
     const filename = req.params.filename;
     const filePath = path.join(uploadDir, filename);
-    res.sendFile(filePath);
+    
+    try {
+      await fs.access(filePath);
+      res.sendFile(filePath);
+    } catch (error) {
+      res.status(404).json({ message: "File not found" });
+    }
   });
   
   return httpServer;

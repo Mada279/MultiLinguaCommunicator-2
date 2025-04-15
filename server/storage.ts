@@ -93,7 +93,15 @@ export class MemStorage implements IStorage {
     this.initSampleData();
   }
   
-  private initSampleData() {
+  private async initSampleData() {
+    // Ensure uploads directory exists
+    const uploadDir = './uploads';
+    try {
+      await fs.mkdir(uploadDir, { recursive: true });
+    } catch (error) {
+      console.error('Error creating uploads directory:', error);
+    }
+    
     // Create a default admin user
     const adminUser: InsertUser = {
       username: "admin",
