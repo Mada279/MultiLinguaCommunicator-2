@@ -61,26 +61,34 @@ const Settings = () => {
                     <h2 className="text-lg font-medium">{t('language')}</h2>
                     <p className="text-sm text-slate-500">Choose your preferred language for the interface</p>
                     
-                    <RadioGroup 
-                      defaultValue={language} 
-                      onValueChange={handleLanguageChange}
-                      className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3"
-                    >
-                      <div className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer">
-                        <RadioGroupItem value="en" id="lang-en" />
-                        <Label htmlFor="lang-en" className="flex-1 cursor-pointer">English</Label>
-                      </div>
+                    <div className="flex flex-wrap gap-4 mt-3">
+                      <Button 
+                        onClick={() => handleLanguageChange('en')}
+                        variant={language === 'en' ? 'default' : 'outline'} 
+                        className="min-w-[120px] flex-grow sm:flex-grow-0"
+                      >
+                        <span className="flag-icon mr-2">🇺🇸</span>
+                        English
+                      </Button>
                       
-                      <div className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer">
-                        <RadioGroupItem value="ar" id="lang-ar" />
-                        <Label htmlFor="lang-ar" className="flex-1 cursor-pointer">العربية (Arabic)</Label>
-                      </div>
+                      <Button 
+                        onClick={() => handleLanguageChange('ar')}
+                        variant={language === 'ar' ? 'default' : 'outline'} 
+                        className="min-w-[120px] flex-grow sm:flex-grow-0"
+                      >
+                        <span className="flag-icon mr-2">🇸🇦</span>
+                        العربية
+                      </Button>
                       
-                      <div className="flex items-center space-x-2 rounded-md border p-3 cursor-pointer">
-                        <RadioGroupItem value="hi" id="lang-hi" />
-                        <Label htmlFor="lang-hi" className="flex-1 cursor-pointer">हिन्दी (Hindi)</Label>
-                      </div>
-                    </RadioGroup>
+                      <Button 
+                        onClick={() => handleLanguageChange('hi')}
+                        variant={language === 'hi' ? 'default' : 'outline'} 
+                        className="min-w-[120px] flex-grow sm:flex-grow-0"
+                      >
+                        <span className="flag-icon mr-2">🇮🇳</span>
+                        हिन्दी
+                      </Button>
+                    </div>
                   </div>
                   
                   {/* Theme Settings */}

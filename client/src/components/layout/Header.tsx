@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { useI18n } from '@/context/I18nContext';
 import { Language } from '@/lib/i18n';
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 interface HeaderProps {
   toggleMobileMenu: () => void;
@@ -24,18 +19,6 @@ const Header: React.FC<HeaderProps> = ({ toggleMobileMenu }) => {
 
   const handleLanguageChange = (lang: Language) => {
     setLanguage(lang);
-  };
-
-  const getLanguageLabel = () => {
-    switch (language) {
-      case 'ar':
-        return 'العربية';
-      case 'hi':
-        return 'हिन्दी';
-      case 'en':
-      default:
-        return 'English';
-    }
   };
 
   return (
@@ -64,46 +47,48 @@ const Header: React.FC<HeaderProps> = ({ toggleMobileMenu }) => {
           </form>
         </div>
         
-        <div className="flex items-center space-x-4 rtl:space-x-reverse">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button 
-                type="button" 
-                className="flex items-center text-sm focus:outline-none"
-              >
-                <span className="font-medium mr-1 rtl:ml-1 rtl:mr-0">
-                  {getLanguageLabel()}
-                </span>
-                <i className="fa-solid fa-chevron-down text-xs"></i>
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => handleLanguageChange('en')}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleLanguageChange('ar')}>
-                العربية
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleLanguageChange('hi')}>
-                हिन्दी
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
+        <div className="flex items-center gap-2">
+          {/* Language Switcher Buttons */}
+          <div className="flex rounded-md overflow-hidden border border-slate-200 mr-3">
+            <button 
+              type="button"
+              onClick={() => handleLanguageChange('en')}
+              className={`px-3 py-1.5 text-xs font-medium ${language === 'en' ? 'bg-primary-500 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+            >
+              EN
+            </button>
+            <button 
+              type="button"
+              onClick={() => handleLanguageChange('ar')}
+              className={`px-3 py-1.5 text-xs font-medium border-l border-r border-slate-200 ${language === 'ar' ? 'bg-primary-500 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+            >
+              عربي
+            </button>
+            <button 
+              type="button"
+              onClick={() => handleLanguageChange('hi')}
+              className={`px-3 py-1.5 text-xs font-medium ${language === 'hi' ? 'bg-primary-500 text-white' : 'bg-white text-slate-700 hover:bg-slate-50'}`}
+            >
+              हिंदी
+            </button>
+          </div>
+
           <button
             type="button"
             className="relative p-1 text-slate-500 hover:text-slate-600 focus:outline-none"
           >
             <i className="fa-solid fa-bell text-xl"></i>
-            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-danger"></span>
+            <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
           </button>
           
-          <button
-            type="button"
-            className="relative p-1 text-slate-500 hover:text-slate-600 focus:outline-none"
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => window.location.href = '/settings'}
+            className="p-1 text-slate-500 hover:text-slate-600 focus:outline-none"
           >
             <i className="fa-solid fa-gear text-xl"></i>
-          </button>
+          </Button>
         </div>
       </div>
     </header>
