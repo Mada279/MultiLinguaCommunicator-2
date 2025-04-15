@@ -4,7 +4,7 @@ export type Language = 'en' | 'ar' | 'hi';
 export const translations = {
   en: {
     // Common
-    appName: 'DocManager',
+    appName: 'Erada HR & Document System',
     loading: 'Loading...',
     save: 'Save',
     cancel: 'Cancel',
@@ -102,7 +102,7 @@ export const translations = {
     // Settings
     language: 'Language',
     theme: 'Theme',
-    notifications: 'Notifications',
+    notificationSettings: 'Notifications',
     security: 'Security',
     profile: 'Profile',
     logout: 'Logout',
@@ -110,7 +110,7 @@ export const translations = {
   
   ar: {
     // Common
-    appName: 'إدارة الوثائق',
+    appName: 'نظام إرادة للموارد البشرية والمستندات',
     loading: 'جاري التحميل...',
     save: 'حفظ',
     cancel: 'إلغاء',
@@ -208,7 +208,7 @@ export const translations = {
     // Settings
     language: 'اللغة',
     theme: 'الثيم',
-    notifications: 'الإشعارات',
+    notificationSettings: 'الإشعارات',
     security: 'الأمان',
     profile: 'الملف الشخصي',
     logout: 'تسجيل الخروج',
@@ -216,7 +216,7 @@ export const translations = {
   
   hi: {
     // Common
-    appName: 'दस्तावेज़ प्रबंधक',
+    appName: 'एराडा एचआर और दस्तावेज प्रणाली',
     loading: 'लोड हो रहा है...',
     save: 'सहेजें',
     cancel: 'रद्द करें',
@@ -314,7 +314,7 @@ export const translations = {
     // Settings
     language: 'भाषा',
     theme: 'थीम',
-    notifications: 'सूचनाएँ',
+    notificationSettings: 'सूचनाएँ',
     security: 'सुरक्षा',
     profile: 'प्रोफ़ाइल',
     logout: 'लॉग आउट',
