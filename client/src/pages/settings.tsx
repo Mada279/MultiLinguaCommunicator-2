@@ -117,20 +117,50 @@ const Settings = () => {
                     <h2 className="text-lg font-medium">Company Information</h2>
                     <p className="text-sm text-slate-500">Update your organization details</p>
                     
-                    <div className="grid grid-cols-1 gap-4 mt-3">
-                      <div className="space-y-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                      <div className="space-y-2 md:col-span-2">
                         <Label htmlFor="company-name">Company Name</Label>
-                        <Input id="company-name" defaultValue="Your Company Name" />
+                        <Input id="company-name" defaultValue="إرادة للموارد البشرية" />
+                      </div>
+                      
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="company-logo">Company Logo</Label>
+                        <div className="border-2 border-dashed rounded-md p-6 flex flex-col items-center justify-center bg-slate-50">
+                          <div className="w-24 h-24 bg-primary-50 rounded-full flex items-center justify-center mb-3">
+                            <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5Z" fill="#E5F0FF"/>
+                              <path d="M15 13C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13C9 11.3431 10.3431 10 12 10C13.6569 10 15 11.3431 15 13Z" fill="#3366FF"/>
+                              <path d="M28 13C28 14.6569 26.6569 16 25 16C23.3431 16 22 14.6569 22 13C22 11.3431 23.3431 10 25 10C26.6569 10 28 11.3431 28 13Z" fill="#3366FF"/>
+                              <path d="M20 28C24.4183 28 28 24.4183 28 20H12C12 24.4183 15.5817 28 20 28Z" fill="#3366FF"/>
+                            </svg>
+                          </div>
+                          <Button variant="outline" size="sm">Change Logo</Button>
+                          <p className="text-xs text-slate-500 mt-2">Recommended size: 200x200px</p>
+                        </div>
                       </div>
                       
                       <div className="space-y-2">
                         <Label htmlFor="company-email">Email Address</Label>
-                        <Input id="company-email" type="email" defaultValue="info@example.com" />
+                        <Input id="company-email" type="email" defaultValue="info@erada-hr.com" />
                       </div>
                       
                       <div className="space-y-2">
                         <Label htmlFor="company-phone">Phone Number</Label>
-                        <Input id="company-phone" defaultValue="+1 123 456 7890" />
+                        <Input id="company-phone" defaultValue="+966 123 456 7890" />
+                      </div>
+                      
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="company-address">Company Address</Label>
+                        <Input id="company-address" defaultValue="الرياض، المملكة العربية السعودية" />
+                      </div>
+                      
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="company-about">About Company</Label>
+                        <textarea 
+                          id="company-about" 
+                          className="w-full min-h-[100px] p-3 border border-slate-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                          defaultValue="نظام إرادة للموارد البشرية والمستندات هو نظام متكامل لإدارة وتنظيم وثائق الموظفين والمتقدمين مع دعم متعدد اللغات."
+                        />
                       </div>
                     </div>
                   </div>
