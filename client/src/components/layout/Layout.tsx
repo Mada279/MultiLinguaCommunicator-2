@@ -36,6 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main className="flex-1 overflow-y-auto bg-slate-50 p-4">
           {children}
         </main>
+        <div className="text-xs text-slate-500 text-center py-2 border-t">
+          Designed by Mohamed Farag
+        </div>
       </div>
     </div>
   );
