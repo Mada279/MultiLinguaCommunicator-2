@@ -24,3 +24,42 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Custom Classes for Brand Identity */
+.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.bg-mint-green {
+  background-color: var(--mint-green);
+}
+
+.bg-light-gray {
+  background-color: var(--light-gray);
+}
+
+.text-dark-blue {
+  color: var(--dark-blue);
+}
+
+.text-mint-green {
+  color: var(--mint-green);
+}
+
+/* Logo Animation */
+.logo-hover {
+  transition: transform 0.3s ease;
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
+
+/* RTL Support */
+[dir="rtl"] .logo-text-en {
+  order: 2;
+}
+
+[dir="rtl"] .logo-text-ar {
+  order: 1;
+}

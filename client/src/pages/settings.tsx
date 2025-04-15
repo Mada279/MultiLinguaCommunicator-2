@@ -47,7 +47,7 @@ const Settings = () => {
           </CardHeader>
           <CardContent>
             <Tabs defaultValue={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="mb-6">
+              <TabsList className="mb-6 bg-light-gray">
                 <TabsTrigger value="general">General</TabsTrigger>
                 <TabsTrigger value="notifications">Notifications</TabsTrigger>
                 <TabsTrigger value="documents">Documents</TabsTrigger>
