@@ -94,6 +94,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading && !user && window.location.pathname !== '/login') {
+      navigate('/login');
+    }
+  }, [user, isLoading]);
+
   return (
     <AuthContext.Provider
       value={{
