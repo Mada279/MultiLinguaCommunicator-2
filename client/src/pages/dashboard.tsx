@@ -109,7 +109,7 @@ const Dashboard = () => {
             icon="fa-file-lines"
             title={t('totalDocuments')}
             value={stats.total}
-            iconColor="bg-primary-100 text-primary-600"
+            iconColor="bg-light-gray text-dark-blue"
             onClick={() => window.location.href = '/documents'}
           />
           <StatCard
@@ -142,25 +142,25 @@ const Dashboard = () => {
               <TabsList className="flex -mb-px space-x-8 rtl:space-x-reverse bg-transparent p-0">
                 <TabsTrigger 
                   value="recent-uploads"
-                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-primary-500 data-[state=active]:text-primary-600 bg-transparent"
+                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-mint-green data-[state=active]:text-dark-blue bg-transparent"
                 >
                   {t('recentUploads')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="document-types"
-                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-primary-500 data-[state=active]:text-primary-600 bg-transparent"
+                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-mint-green data-[state=active]:text-dark-blue bg-transparent"
                 >
                   {t('documentTypes')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="templates"
-                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-primary-500 data-[state=active]:text-primary-600 bg-transparent"
+                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-mint-green data-[state=active]:text-dark-blue bg-transparent"
                 >
                   {t('templates')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="approvals"
-                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-primary-500 data-[state=active]:text-primary-600 bg-transparent"
+                  className="border-b-2 border-transparent py-4 px-1 text-sm font-medium text-slate-500 hover:text-slate-700 hover:border-slate-300 data-[state=active]:border-mint-green data-[state=active]:text-dark-blue bg-transparent"
                 >
                   {t('approvals')}
                 </TabsTrigger>
@@ -204,7 +204,7 @@ const Dashboard = () => {
             <h2 className="text-lg font-medium text-slate-900">
               {t('documentCategories')}
             </h2>
-            <button className="flex items-center px-3 py-1.5 text-sm bg-primary-50 text-primary-700 rounded-md hover:bg-primary-100">
+            <button className="flex items-center px-3 py-1.5 text-sm bg-mint-green text-white rounded-md hover:bg-mint-green/90">
               <i className="fa-solid fa-plus text-xs ltr:mr-1 rtl:ml-1"></i>
               {t('addCategory')}
             </button>
