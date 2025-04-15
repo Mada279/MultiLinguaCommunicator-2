@@ -15,8 +15,7 @@ import Login from './pages/login';
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
         {/* Main pages */}
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Dashboard />} />
@@ -29,19 +28,20 @@ function Router() {
         {/* Fallback to 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <AuthProvider>
-          <Router />
-          <Toaster />
-        </AuthProvider>
-      </I18nProvider>
+      <BrowserRouter>
+        <I18nProvider>
+          <AuthProvider>
+            <Router />
+            <Toaster />
+          </AuthProvider>
+        </I18nProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
