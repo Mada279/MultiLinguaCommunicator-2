@@ -60,12 +60,26 @@ const Dashboard = () => {
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-slate-900">
-            {t('documentManagement')}
-          </h1>
-          <p className="text-slate-500 mt-1">
-            {t('documentManagementDesc')}
-          </p>
+          <div className="flex items-center mb-2">
+            <div className="w-10 h-10 bg-mint-green rounded-full flex items-center justify-center mr-3">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6H12L10 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V8C22 6.9 21.1 6 20 6ZM20 18H4V8H20V18Z" fill="white"/>
+                <path d="M14 14C14 15.1 13.1 16 12 16C10.9 16 10 15.1 10 14C10 12.9 10.9 12 12 12C13.1 12 14 12.9 14 14Z" fill="white"/>
+                <path d="M12 13C11.45 13 11 13.45 11 14C11 14.55 11.45 15 12 15C12.55 15 13 14.55 13 14C13 13.45 12.55 13 12 13Z" fill="#00B894"/>
+              </svg>
+            </div>
+            <h1 className="text-2xl font-bold text-slate-900">
+              {t('documentManagement')}
+            </h1>
+          </div>
+          <div className="flex flex-col">
+            <p className="text-slate-500 mt-1">
+              {t('documentManagementDesc')}
+            </p>
+            <p className="text-sm text-mint-green font-medium mt-1">
+              "ثقتك تبدأ من التوثيق"
+            </p>
+          </div>
         </div>
         
         {/* Notification Area - Only show if there are expiring documents */}

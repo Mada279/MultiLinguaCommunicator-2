@@ -17,12 +17,15 @@ const Sidebar: React.FC = () => {
     <aside className="hidden md:flex md:w-64 flex-col bg-white border-r border-slate-200 h-full">
       <div className="p-4 border-b border-slate-200">
         <div className="flex flex-col items-center justify-center">
-          <div className="flex items-center justify-center bg-primary-50 p-2 rounded-full mb-2">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5Z" fill="#E5F0FF"/>
-              <path d="M15 13C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13C9 11.3431 10.3431 10 12 10C13.6569 10 15 11.3431 15 13Z" fill="#3366FF"/>
-              <path d="M28 13C28 14.6569 26.6569 16 25 16C23.3431 16 22 14.6569 22 13C22 11.3431 23.3431 10 25 10C26.6569 10 28 11.3431 28 13Z" fill="#3366FF"/>
-              <path d="M20 28C24.4183 28 28 24.4183 28 20H12C12 24.4183 15.5817 28 20 28Z" fill="#3366FF"/>
+          <div className="flex items-center justify-center bg-mint-green rounded-full p-3 mb-2">
+            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z" fill="#1E2A38"/>
+              <path d="M18 9H13V4H14V8H18V9Z" fill="#F0F3F5"/>
+              <path d="M16 12C16 13.1 15.1 14 14 14C12.9 14 12 13.1 12 12C12 10.9 12.9 10 14 10C15.1 10 16 10.9 16 12Z" fill="#F0F3F5"/>
+              <path d="M15 17H13C12.45 17 12 16.55 12 16V15.5C12 14.95 12.45 14.5 13 14.5H15C15.55 14.5 16 14.95 16 15.5V16C16 16.55 15.55 17 15 17Z" fill="#F0F3F5"/>
+              <path d="M10 11H8V13H10V11Z" fill="#00B894"/>
+              <path d="M10 15H8V17H10V15Z" fill="#00B894"/>
+              <path d="M10 7H8V9H10V7Z" fill="#00B894"/>
             </svg>
           </div>
           <div className="text-center">
@@ -44,7 +47,7 @@ const Sidebar: React.FC = () => {
             <a className={cn(
               "flex items-center px-2 py-2 text-sm font-medium rounded-md",
               isActive('/') 
-                ? "bg-primary-50 text-primary-700" 
+                ? "bg-light-gray text-dark-blue" 
                 : "text-slate-700 hover:bg-slate-100"
             )}>
               <i className="fa-solid fa-home w-5 h-5 ltr:mr-2 rtl:ml-2"></i>

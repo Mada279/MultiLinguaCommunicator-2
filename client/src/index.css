@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --dark-blue: #1E2A38;
+  --mint-green: #00B894;
+  --light-gray: #F0F3F5;
+  --white: #FFFFFF;
+}
+
+@layer base {
+  html {
+    font-family: "Poppins", "Tajawal", "Cairo", sans-serif;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
