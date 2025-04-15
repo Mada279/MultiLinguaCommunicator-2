@@ -14,7 +14,7 @@ const StatCard: React.FC<StatCardProps> = ({
   icon,
   title,
   value,
-  iconColor = 'bg-primary-100 text-primary-600',
+  iconColor = 'bg-light-gray text-dark-blue',
   onClick
 }) => {
   const { t } = useI18n();

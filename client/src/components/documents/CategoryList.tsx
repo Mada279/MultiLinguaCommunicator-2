@@ -53,7 +53,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ category, documentTypes, do
       </ul>
       
       <Link href={`/documents?category=${category.id}`}>
-        <a className="text-xs text-primary-600 hover:text-primary-800 font-medium">
+        <a className="text-xs text-mint-green hover:text-mint-green/90 font-medium">
           {t('viewAllDocuments')}
         </a>
       </Link>

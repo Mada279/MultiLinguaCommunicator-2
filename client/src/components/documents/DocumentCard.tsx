@@ -69,7 +69,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({
     return t('expiresOn', { date });
   };
   
-  const uploadDateFormatted = formatDate(document.uploadedAt, language as any);
+  const uploadDateFormatted = document.uploadedAt ? formatDate(document.uploadedAt, language as any) : '';
   
   return (
     <div className="document-card bg-white rounded-lg shadow border border-slate-200 overflow-hidden transition-all hover:translate-y-[-2px] hover:shadow-lg">
@@ -110,7 +110,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             {onView && (
               <button 
-                className="p-1 text-slate-400 hover:text-primary-600"
+                className="p-1 text-slate-400 hover:text-mint-green"
                 onClick={() => onView(document)}
                 title={t('view')}
               >
@@ -120,7 +120,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({
             
             {onDownload && (
               <button 
-                className="p-1 text-slate-400 hover:text-primary-600"
+                className="p-1 text-slate-400 hover:text-mint-green"
                 onClick={() => onDownload(document)}
                 title={t('download')}
               >
