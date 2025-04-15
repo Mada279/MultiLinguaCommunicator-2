@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter, useNavigate } from 'react-router-dom'; // Added BrowserRouter
 import { User } from '@shared/schema';
 import { apiRequest } from '@/lib/queryClient';
 
@@ -36,11 +36,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is already logged in
     const checkAuthStatus = async () => {
       try {
-        // In a real application, you'd make a request to get the current user
-        // For this demo, we'll set the first user as logged in by default
         const response = await fetch('/api/users/1');
         if (response.ok) {
           const userData = await response.json();
@@ -59,12 +56,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (username: string, password: string): Promise<User> => {
     setIsLoading(true);
     try {
-      // In a real application, you'd make a request to authenticate the user
-      // For this demo, we'll just set a hard-coded user
       setUser({
         id: 1,
         username: 'admin',
-        password: '', // Don't include actual password
+        password: '',
         fullName: 'Admin User',
         email: 'admin@example.com',
         role: 'admin',
@@ -72,7 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         avatar: '',
         createdAt: new Date()
       });
-      
+
       return user as User;
     } catch (error) {
       console.error('Login error:', error);
@@ -85,7 +80,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      // In a real application, you'd make a request to log out
       setUser(null);
     } catch (error) {
       console.error('Logout error:', error);
@@ -101,7 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!isLoading && !user && window.location.pathname !== '/login') {
       navigate('/login');
     }
-  }, [user, isLoading]);
+  }, [user, isLoading, navigate]); // Added navigate to dependency array
 
   return (
     <AuthContext.Provider
@@ -117,3 +111,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+// Example of how to use AuthProvider with BrowserRouter
+const App = () => {
+  return (
+      <BrowserRouter>
+        <AuthProvider>
+          {/* Your app components here */}
+        </AuthProvider>
+      </BrowserRouter>
+  );
+};
+
+export default App;
